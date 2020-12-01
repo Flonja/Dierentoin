@@ -54,6 +54,11 @@ namespace Dierentoin
             }
         }
 
+        private void AddAnimals(object sender, RoutedEventArgs e)
+        {
+            AddDefaultAnimals();
+        }
+
         private void AddElephant(object sender, RoutedEventArgs e)
         {
             var animal = new Elephant();
@@ -99,6 +104,51 @@ namespace Dierentoin
             var monkey1 = new Monkey();
             monkey1.Name = "monke";
             AddAnimal(monkey1);
+        }
+
+        private void FeedElephants(object sender, RoutedEventArgs e)
+        {
+            foreach(var animal in Animals)
+            {
+                if(animal.Key is Elephant elephant)
+                {
+                    elephant.Eat();
+                    animal.Value.EnergyChanged();
+                }
+            }
+        }
+
+        private void FeedLions(object sender, RoutedEventArgs e)
+        {
+            foreach (var animal in Animals)
+            {
+                if (animal.Key is Lion lion)
+                {
+                    lion.Eat();
+                    animal.Value.EnergyChanged();
+                }
+            }
+        }
+
+        private void FeedMonkeys(object sender, RoutedEventArgs e)
+        {
+            foreach (var animal in Animals)
+            {
+                if (animal.Key is Monkey monkey)
+                {
+                    monkey.Eat();
+                    animal.Value.EnergyChanged();
+                }
+            }
+        }
+
+        private void FeedAnimals(object sender, RoutedEventArgs e)
+        {
+            foreach (var animal in Animals)
+            {
+                animal.Key.Eat();
+                animal.Value.EnergyChanged();
+            }
         }
     }
 }
